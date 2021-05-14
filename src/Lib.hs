@@ -5,8 +5,6 @@ module Lib
         genMatrix,
         quadFunc,
         reverseList,
-        quicksort,
-        mergesort,
         runApp
     ) where
 
