@@ -20,7 +20,9 @@ fizzBuzz = [
     | x <- [1..] ]
 
 printFizzBuzz :: Int -> IO ()
-printFizzBuzz n = putStrLn (foldr (\ a b -> a ++ "\n" ++ b) "" (take n fizzBuzz))
+printFizzBuzz n = putStrLn (foldl1 (\acc x -> acc ++ "\n" ++ x) (take n fizzBuzz))
+
+printFizzBuzz' n = putStrLn $ unlines (take n fizzBuzz)
 
 genMatrix :: Random r => Int -> (r,r) -> IO [[r]]
 genMatrix n range = do
