@@ -9,6 +9,8 @@ module Lib
     ) where
 
 import System.Random
+import Data.Char
+
 import Sort
 
 fizzBuzz = [
@@ -45,6 +47,14 @@ reverseList [] = []
 reverseList [x] = [x]
 reverseList (x:xs) = reverseList xs ++ [x]
 
+strToInt :: String -> Maybe Int
+strToInt [] = Nothing
+strToInt cs = Just $ convertReversed $ reverse cs
+    where 
+        convertReversed :: String -> Int
+        convertReversed [c] = digitToInt c
+        convertReversed (c:cs) = digitToInt c + convertReversed cs * 10
+
 runApp :: IO ()
 runApp = do
     printFizzBuzz 15
@@ -57,3 +67,8 @@ runApp = do
     l <- randomList (0 :: Int, 100)
     print $ quicksort (take 1000 l)
     print $ mergesort (take 1000 l)
+    putStrLn "Enter number that should be doubled"
+    str <- getLine 
+    print $ case strToInt str of 
+        Just val -> val * 2
+        Nothing -> error "strToInt error"
