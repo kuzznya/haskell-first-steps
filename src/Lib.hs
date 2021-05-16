@@ -50,10 +50,22 @@ reverseList (x:xs) = reverseList xs ++ [x]
 strToInt :: String -> Maybe Int
 strToInt [] = Nothing
 strToInt cs = Just $ convertReversed $ reverse cs
-    where 
+    where
         convertReversed :: String -> Int
         convertReversed [c] = digitToInt c
         convertReversed (c:cs) = digitToInt c + convertReversed cs * 10
+
+binarySearch val xs = search 0 (length xs)
+    where
+        meanIdx from to = (to + from) `div` 2
+        meanValue from to = xs !! meanIdx from to
+        search from to
+            | from == to = from
+            | otherwise  = compareAndSearch from to (meanValue from to)
+        compareAndSearch from to meanVal
+            | meanVal > val = search from (to `div` 2)
+            | meanVal < val = search (from `div` 2 + 1) to
+            | otherwise     = meanIdx from to
 
 runApp :: IO ()
 runApp = do
@@ -67,8 +79,9 @@ runApp = do
     l <- randomList (0 :: Int, 100)
     print $ quicksort (take 1000 l)
     print $ mergesort (take 1000 l)
+    print $ binarySearch 1 [0, 2, 3, 1, 5, 6]
     putStrLn "Enter number that should be doubled"
-    str <- getLine 
-    print $ case strToInt str of 
+    str <- getLine
+    print $ case strToInt str of
         Just val -> val * 2
         Nothing -> error "strToInt error"
