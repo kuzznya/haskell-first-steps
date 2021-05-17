@@ -10,8 +10,10 @@ module Lib
 
 import System.Random
 import Data.Char
+import qualified Data.Map as Map
 
 import Sort
+import Geometry
 
 fizzBuzz = [
     show x ++
@@ -67,6 +69,9 @@ binarySearch val xs = search 0 (length xs)
             | meanVal < val = search (from `div` 2 + 1) to
             | otherwise     = meanIdx from to
 
+printArea :: (Area shape) => shape -> IO ()
+printArea shape = print $ area shape
+
 runApp :: IO ()
 runApp = do
     printFizzBuzz 15
@@ -85,3 +90,11 @@ runApp = do
     print $ case strToInt str of
         Just val -> val * 2
         Nothing -> error "strToInt error"
+    let map = Map.fromList [("kuzznya", "Ilya Kuznetsov"), ("afterbvrner", "Max Golish")]
+    print map
+    let circle = Circle (Vector 0 1) 10
+    print circle
+    printArea circle
+    let rectangle = Rectangle (Vector 10 10) (Vector 0 0)
+    print rectangle
+    printArea rectangle
