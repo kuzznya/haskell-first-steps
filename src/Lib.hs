@@ -1,12 +1,11 @@
-module Lib
-    (
-        fizzBuzz,
-        printFizzBuzz,
-        genMatrix,
-        quadFunc,
-        reverseList,
-        runApp
-    ) where
+module Lib (
+    fizzBuzz,
+    printFizzBuzz,
+    genMatrix,
+    quadFunc,
+    reverseList,
+    runApp
+) where
 
 import System.Random
 import Data.Char

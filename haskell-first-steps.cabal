@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: ced4e54fb83774f3ac25f1b306efd9bed224c658806a9298fbc1603f59531c7d
+-- hash: a3487b8258e1885d3aef739c9e01109d317e1697c126287467acb227866af810
 
 name:           haskell-first-steps
 version:        0.1.0.0
@@ -27,6 +27,7 @@ library
   exposed-modules:
       Geometry
       Lib
+      Models
       Sort
   other-modules:
       Paths_haskell_first_steps

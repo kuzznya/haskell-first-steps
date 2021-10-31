@@ -1,10 +1,10 @@
 module Geometry (
-    Area
-    , area
-    , Moveable
-    , move
-    , Vector (..)
-    , Shape (..)
+    Area,
+    area,
+    Moveable,
+    move,
+    Vector (..),
+    Shape (..)
 ) where
 
 class Area shape where
